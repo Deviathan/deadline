@@ -31,7 +31,6 @@ app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
 class Page(db.Model):
-    __tablename__ = "page"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(64))
     text = db.Column(db.UnicodeText)
