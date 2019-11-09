@@ -1,0 +1,74 @@
+body{
+font-family: 'Lato', sans-serif;
+background-color:whitesmoke;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+.aboutme{
+  text-align: center;
+  border:1px;
+}
+.button{
+background-color: #949699;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+text-decoration: none;
+font-family: 'Lato', sans-serif;
+}
+
+.button_menu{
+text-transform: uppercase;
+background: #949699;
+color:white;
+padding: 20px;
+display: inline-block;
+border: none;
+font-family: 'Lato', sans-serif;
+text-decoration: none;
+}
+.button_menu:visited{
+text-transform: uppercase;
+background: #949699;
+color:white;
+padding: 20px;
+display: inline-block;
+border: none;
+font-family: 'Lato', sans-serif;
+text-decoration: none;
+}
+
+.button_menu:hover {
+text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+transition: all 0.4s ease 0s;
+}
+
+.table{
+border-collapse: collapse;
+width: 80%;
+height:50%;
+border: 3px solid #949699;
+text-align:center; 
+margin-left:auto; 
+margin-right:auto;
+}
+
+} 
+input[type=text] {
+text-align: center;
+font-size: 16px;
+width: 60%;
+padding: 15px 32px;
+margin: 4px 2px;
+box-sizing: border-box;
+border: none;
+background-color: #949699;
+color: white;}
+
+.hide {
+display: none;
+}

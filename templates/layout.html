@@ -1,0 +1,99 @@
+<html>
+  <head >
+    <title>Deadline(); A Programmers blog;</title>
+    <style>
+        body{
+        font-family: 'Open Sans', sans-serif;
+        background-color:#FFFFFFFF;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        }
+        article{
+          margin-left: 10%;
+          text-align: left;
+          width: 80%;
+
+        }
+        .aboutme{
+          text-align: center;
+          border-style:solid;
+        }
+        .button{
+        background-color: #000000FF;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        }
+
+        .button_menu{
+        text-transform: uppercase;
+        background-color: #000000FF;
+        color:white;
+        padding: 10px;
+        display: inline-block;
+        font-family: 'Open Sans', sans-serif;
+        text-decoration: none;
+        }
+        .button_menu:visited{
+        text-transform: uppercase;
+        color:white;
+        padding: 20px;
+        display: inline-block;
+        border: none;
+        text-decoration: none;
+        }
+
+        .button_menu:hover {
+        text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+        transition: all 0.4s ease 0s;
+        }
+
+        .table{
+        border-collapse: collapse;
+        width: 80%;
+        height:50%;
+        border: 3px solid #282828;
+        text-align:center; 
+        margin-left:auto; 
+        margin-right:auto;
+        }
+
+        } 
+        input[type=text] {
+        text-align: center;
+        font-size: 16px;
+        width: 60%;
+        padding: 15px 32px;
+        margin: 4px 2px;
+        box-sizing: border-box;
+        border: none;
+        background-color: #282828;
+        color: white;}
+    </style>
+  </head>
+    <body>
+ <header> 
+   <table align="center">
+  <tr><td><img src="/static/main.png" width="180" heigth="200"></tr></td>
+  <tr><td><h1>Deadline();</h1></td></tr> 
+</table>
+</header>
+ <nav> 
+  <table align="center">
+      <tr>
+       <td align="mid"><a href="{{url_for('index')}}"  class="button_menu">HOME</a></td> 
+       <td align="mid"><a href="{{url_for('aboutme')}}" class="button_menu">ABOUT ME</a></td>
+      </tr>
+      </table>
+  </nav>
+  <article>
+          {%block content%}  {% endblock content%}
+  <article>
+  </body>
+</html>

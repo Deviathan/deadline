@@ -1,0 +1,7 @@
+Flask
+Flask-WTF
+Flask-Admin
+Flask-SQLAlchemy
+Flask-Security>=1.7.5
+flask-basicauth
+enum34==1.1.6
