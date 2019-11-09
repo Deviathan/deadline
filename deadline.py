@@ -17,11 +17,11 @@ import os.path as op
 
 
 app = Flask(__name__)
-import random
-key = random.randint(0,10000)
 
 
 # Create dummy secrey key so we can use sessions
+import random
+key = random.randint(0,10000)
 app.config['SECRET_KEY'] = str(key)
 
 # Create in-memory database
@@ -30,9 +30,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + app.config['DATABASE_FILE
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
-class Page(db.Model):
+class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(64))
+    title = db.Column(db.Unicode(64))
     text = db.Column(db.UnicodeText)
 
     def __unicode__(self):
@@ -47,13 +47,10 @@ class Aboutme(db.Model):
         return self.name
 
 # Create user model.
-class User(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(64))
-
-
-
 
     @property
     def is_authenticated(self):
@@ -92,7 +89,7 @@ class LoginForm(form.Form):
             raise validators.ValidationError('Invalid password')
 
     def get_user(self):
-        return db.session.query(User).filter_by(login=self.login.data).first()
+        return db.session.query(Users).filter_by(login=self.login.data).first()
 
 
 class RegistrationForm(form.Form):
@@ -112,7 +109,7 @@ def init_login():
     # Create user loader function
     @login_manager.user_loader
     def load_user(user_id):
-        return db.session.query(User).get(user_id)
+        return db.session.query(Users).get(user_id)
 
 class CKTextAreaWidget(widgets.TextArea):
     def __call__(self, field, **kwargs):
@@ -171,7 +168,7 @@ class MyAdminIndexView(admin.AdminIndexView):
 #index page
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    post = Page.query.all()
+    post = Posts.query.all()
     return render_template("index.html",post=post)
 
 #/aboutme
@@ -197,8 +194,8 @@ init_login()
 admin = admin.Admin(app, 'Deadline AdminPanel', index_view=MyAdminIndexView(), base_template='admin.html')
 
 # Add view
-admin.add_view(MyModelView(User,db.session))
-admin.add_view(MyModelView(Page,db.session))
+admin.add_view(MyModelView(Users,db.session))
+admin.add_view(MyModelView(Posts,db.session))
 admin.add_view(MyModelView(Aboutme,db.session))
 
 
@@ -210,8 +207,8 @@ def build_sample_db():
     db.create_all()
     # passwords are hashed, to use plaintext passwords instead:
     #test_user = User(login="admin", password="admin")
-    first_post = Page(name="My_first_post",text="my first post :)")
-    test_user = User(login="admin", password=generate_password_hash("admin"))
+    first_post = Posts(title="My_first_post",text="my first post :)")
+    test_user = Users(login="admin", password=generate_password_hash("admin"))
     first_aboutme = Aboutme(text = """Hi my name is Kostas im a university student and I build this website to share my experience,
     thoughts and ideas in programming with you...propably you will only see python as I am bored to learn another programming language...""")
     db.session.add(test_user)
