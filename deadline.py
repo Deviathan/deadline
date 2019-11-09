@@ -43,6 +43,7 @@ class Aboutme(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.UnicodeText)
 
+
     def __unicode__(self):
         return self.name
 
@@ -207,10 +208,15 @@ def build_sample_db():
     db.create_all()
     # passwords are hashed, to use plaintext passwords instead:
     #test_user = User(login="admin", password="admin")
-    first_post = Posts(title="My_first_post",text="my first post :)")
+    first_post = Posts(title="My First Post",text="""Ok Welcome to my blog... as you see is simple...Its created using flask a python microframework
+    that is good for building simple websites like blogs and stuff... I know ... I need to add more things... Just wait that is just a prototype if
+    you want to see more things from me just add follow me on Github: https://github.com/Deviathan and maybe on linked in ? : https://www.linkedin.com/in/kostas-gkiris/
+    if you want to see more in my blog dont tell to anyone its a secret but there is a secret page called /admin ... The username and password is ...i dont know...
+    just try admin and admin.. and you will see what I made :) """)
     test_user = Users(login="admin", password=generate_password_hash("admin"))
     first_aboutme = Aboutme(text = """Hi my name is Kostas im a university student and I build this website to share my experience,
-    thoughts and ideas in programming with you...propably you will only see python as I am bored to learn another programming language...""")
+    thoughts and ideas in programming with you...propably you will only see python as I am bored to learn another programming language...if you want to see
+    posts just go at home page :) come on...move go there nothing else to see here.... """)
     db.session.add(test_user)
     db.session.add(first_post)
     db.session.add(first_aboutme)
