@@ -1,6 +1,6 @@
 {%extends "layout.html"%} 
 {% block content %}
-{% for p in post %}
+{% for p in post|reverse %}
     <h1>{{p.title}}</h1>
     <hr>
     <p>{{p.text}}</p>
